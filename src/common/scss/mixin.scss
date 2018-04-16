@@ -1,0 +1,30 @@
+@mixin bg-img($url) {
+  background-image: url($url+"@2x.png");
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    background-image: url($url+"@3x.png");
+  }
+}
+
+@mixin border-1px($color,$position) {
+  position: relative;
+  @if ($position == "bottom"){
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-top: 1px solid $color;
+      width: 100%;
+    }
+  }
+  @if ($position == "top"){
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-top: 1px solid $color;
+      width: 100%;
+    }
+  }
+}
